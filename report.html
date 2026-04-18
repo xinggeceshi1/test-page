@@ -129,9 +129,17 @@ let html=`
 
 document.getElementById("content").innerHTML=html;
 
-if(localStorage.getItem("paid")) unlock();
+if(localStorage.getItem("paid") === "true"){
+  unlock();
+}
+
 
 function unlock(){
+  if(localStorage.getItem("paid") !== "true"){
+    alert("请先完成支付");
+    return;
+  }
+
 localStorage.setItem("paid","true");
 document.getElementById("lock").innerHTML=`
 <h2>📈 深度成长路径分析</h2>
