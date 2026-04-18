@@ -3,162 +3,239 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>性格天赋深度测试（20题）</title>
+<title>性格天赋深度测试</title>
 
 <style>
-body{font-family:Arial;background:#f4f6f9;margin:0}
-.container{
-    max-width:750px;
-    margin:20px auto;
-    background:#fff;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 8px 20px rgba(0,0,0,0.1)
+body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+    background:linear-gradient(180deg,#f8f9fb,#e9ecf3);
 }
-h1{text-align:center}
-.question{margin:18px 0}
-.option{
-    display:block;
-    margin:6px 0;
-    padding:10px;
-    border-radius:6px;
-    background:#f1f1f1;
-    cursor:pointer
-}
-.option:hover{background:#ffeaea}
 
-button{
+/* 顶部 */
+.header{
+    padding:20px;
+    text-align:center;
+}
+
+.header h1{
+    margin:0;
+    font-size:22px;
+}
+
+.header p{
+    color:#888;
+    font-size:13px;
+}
+
+/* 主卡片 */
+.container{
+    max-width:600px;
+    margin:10px auto 30px;
+    background:#fff;
+    padding:20px;
+    border-radius:16px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* 问题 */
+.question{
+    margin-top:20px;
+    padding:15px;
+    border-radius:12px;
+    background:#fafafa;
+    border:1px solid #eee;
+}
+
+/* 选项 */
+label{
+    display:block;
     padding:12px;
-    background:#007bff;
+    margin-top:8px;
+    border-radius:10px;
+    background:#f3f4f6;
+    cursor:pointer;
+    transition:all 0.2s ease;
+}
+
+label:hover{
+    background:#ffeaea;
+    transform:scale(1.02);
+}
+
+input{
+    margin-right:6px;
+}
+
+/* 按钮 */
+button{
+    width:100%;
+    padding:16px;
+    background:linear-gradient(90deg,#ff3b30,#ff6a5f);
     color:#fff;
     border:none;
-    border-radius:6px;
+    border-radius:12px;
     font-size:16px;
-    width:100%
+    margin-top:25px;
+    box-shadow:0 6px 20px rgba(255,59,48,0.3);
 }
 
-.result{display:none;margin-top:20px}
-
-.pay{
-    background:#fff3cd;
-    padding:15px;
-    border-radius:10px;
-    margin-top:15px
+.tip{
+    text-align:center;
+    font-size:12px;
+    color:#999;
+    margin-top:10px;
 }
 </style>
 </head>
 
 <body>
 
+<div class="header">
+<h1>性格天赋深度测试</h1>
+<p>已有 52871 人完成 · 用时约1分钟</p>
+</div>
+
 <div class="container">
 
-<h1>性格天赋深度测试（20题）</h1>
-<p style="text-align:center;color:gray;">
-已有 52871 人完成测试 · 准确率高达93%
-</p>
+<!-- ✅ 20题完整 -->
 
-<div id="questions"></div>
-
-<button onclick="showResult()">查看结果</button>
-
-<div class="result" id="result">
-
-<h2>你的性格类型：</h2>
-<p id="resultText" style="font-size:18px;font-weight:bold"></p>
-
-<div style="margin-top:15px;padding:15px;background:#ffeaea;border-radius:10px;">
-<p id="hookText" style="font-weight:bold;color:#d9534f"></p>
+<div class="question">
+<p>1. 在安排事情时，你更倾向于：</p>
+<label><input type="radio" name="q1">提前规划好每一步</label>
+<label><input type="radio" name="q1">顺其自然灵活应对</label>
 </div>
 
-<div class="pay">
-<p>🔒 你的【天赋赚钱潜力报告】已生成（限时可查看）</p>
-
-<ul>
-<li>✔ 你真正适合的赚钱路径（90%的人选错）</li>
-<li>✔ 你的隐藏优势如何变现</li>
-<li>✔ 你未来3年的关键机会点</li>
-<li>✔ 哪种选择会让你收入翻倍</li>
-</ul>
-
-<button onclick="goPay()">立即解锁完整报告（9.9元）</button>
-
-<p style="font-size:12px;color:gray;margin-top:8px;">
-已有 1327 人刚刚解锁
-</p>
-
+<div class="question">
+<p>2. 遇到问题时，你更倾向于：</p>
+<label><input type="radio" name="q2">自己独立解决</label>
+<label><input type="radio" name="q2">与他人讨论交流</label>
 </div>
+
+<div class="question">
+<p>3. 空闲时间，你更倾向于：</p>
+<label><input type="radio" name="q3">独处思考或放松</label>
+<label><input type="radio" name="q3">和朋友一起活动</label>
 </div>
+
+<div class="question">
+<p>4. 做决定时，你更倾向于：</p>
+<label><input type="radio" name="q4">依据逻辑分析</label>
+<label><input type="radio" name="q4">依靠直觉判断</label>
+</div>
+
+<div class="question">
+<p>5. 面对环境，你更倾向于：</p>
+<label><input type="radio" name="q5">追求秩序与规则</label>
+<label><input type="radio" name="q5">接受变化与自由</label>
+</div>
+
+<div class="question">
+<p>6. 在能力上，你更倾向于：</p>
+<label><input type="radio" name="q6">分析问题</label>
+<label><input type="radio" name="q6">表达观点</label>
+</div>
+
+<div class="question">
+<p>7. 面对机会，你更倾向于：</p>
+<label><input type="radio" name="q7">先评估风险</label>
+<label><input type="radio" name="q7">先尝试再说</label>
+</div>
+
+<div class="question">
+<p>8. 判断事物时，你更倾向于：</p>
+<label><input type="radio" name="q8">相信数据和事实</label>
+<label><input type="radio" name="q8">相信感觉和直觉</label>
+</div>
+
+<div class="question">
+<p>9. 做事风格上，你更倾向于：</p>
+<label><input type="radio" name="q9">稳定持续推进</label>
+<label><input type="radio" name="q9">灵活随机应变</label>
+</div>
+
+<div class="question">
+<p>10. 在结果上，你更倾向于：</p>
+<label><input type="radio" name="q10">把事情做到正确</label>
+<label><input type="radio" name="q10">让他人感到满意</label>
+</div>
+
+<div class="question">
+<p>11. 对赚钱方式，你更倾向于：</p>
+<label><input type="radio" name="q11">靠能力与专业</label>
+<label><input type="radio" name="q11">靠机会与人脉</label>
+</div>
+
+<div class="question">
+<p>12. 在坚持方面，你更倾向于：</p>
+<label><input type="radio" name="q12">长期深耕一件事</label>
+<label><input type="radio" name="q12">不断尝试新方向</label>
+</div>
+
+<div class="question">
+<p>13. 在发展方向，你更倾向于：</p>
+<label><input type="radio" name="q13">深度专精</label>
+<label><input type="radio" name="q13">多方向探索</label>
+</div>
+
+<div class="question">
+<p>14. 面对压力时，你更倾向于：</p>
+<label><input type="radio" name="q14">独自承担</label>
+<label><input type="radio" name="q14">寻求帮助</label>
+</div>
+
+<div class="question">
+<p>15. 对收入，你更倾向于：</p>
+<label><input type="radio" name="q15">稳定安全</label>
+<label><input type="radio" name="q15">高风险高回报</label>
+</div>
+
+<div class="question">
+<p>16. 他人眼中，你更倾向于：</p>
+<label><input type="radio" name="q16">理性冷静</label>
+<label><input type="radio" name="q16">情感丰富</label>
+</div>
+
+<div class="question">
+<p>17. 吸引你的东西，你更倾向于：</p>
+<label><input type="radio" name="q17">明确目标</label>
+<label><input type="radio" name="q17">有趣体验</label>
+</div>
+
+<div class="question">
+<p>18. 内心担忧，你更倾向于：</p>
+<label><input type="radio" name="q18">害怕失败</label>
+<label><input type="radio" name="q18">害怕错过</label>
+</div>
+
+<div class="question">
+<p>19. 在掌控感上，你更倾向于：</p>
+<label><input type="radio" name="q19">控制局面</label>
+<label><input type="radio" name="q19">顺其自然</label>
+</div>
+
+<div class="question">
+<p>20. 在认同感上，你更倾向于：</p>
+<label><input type="radio" name="q20">被认可能力</label>
+<label><input type="radio" name="q20">被理解情绪</label>
+</div>
+
+<button onclick="goPay()">查看完整报告</button>
+
+<div class="tip">完成测试后即可查看结果</div>
 
 </div>
 
 <script>
-
-const questions=[
-["你更容易提前规划好事情","更习惯顺其自然"],
-["遇到问题你更倾向自己解决","找人一起讨论"],
-["空闲时间你更喜欢一个人待着","和别人一起活动"],
-["做决定时你更看重逻辑分析","依赖内心感觉"],
-["你更讨厌混乱无序","被规则限制"],
-["你更擅长分析问题","表达想法"],
-["面对机会你更愿意先评估","先尝试"],
-["你更相信数据逻辑","直觉判断"],
-["做事更倾向稳定推进","灵活变化"],
-["你更在意把事情做对","让别人满意"],
-["赚钱你更倾向靠能力","靠机会人脉"],
-["你更容易长期坚持一件事","不断尝试新方向"],
-["你更适合深度专精","多方向发展"],
-["面对压力你更独自承受","寻求帮助"],
-["你更希望稳定收入","高回报机会"],
-["别人更觉得你理性冷静","情绪丰富"],
-["你更容易被明确目标吸引","有趣感觉吸引"],
-["你更害怕失败","害怕错过"],
-["你更倾向掌控局面","顺其自然"],
-["你更希望被认可能力","被理解情绪"]
-];
-
-const container=document.getElementById("questions");
-
-questions.forEach((q,i)=>{
-container.innerHTML+=`<div class="question">
-<p>${i+1}. 请选择更符合你的描述：</p>
-<label class="option"><input type="radio" name="q${i}" value="A"> ${q[0]}</label>
-<label class="option"><input type="radio" name="q${i}" value="B"> ${q[1]}</label>
-</div>`;
-});
-
-function showResult(){
-let score=0;
-
-for(let i=0;i<questions.length;i++){
-let ans=document.querySelector(`input[name="q${i}"]:checked`);
-if(!ans){alert("请完成所有题目");return}
-if(ans.value==='A')score++;
-}
-
-let result="";
-let hook="";
-
-if(score>=14){
-result="【掌控型天赋人格】你具备强逻辑与决策能力";
-hook="你具备明显的赚钱优势，但如果方向选错，反而更容易被困在高强度低回报的路径里。";
-}else if(score>=8){
-result="【均衡成长型人格】你适应力极强";
-hook="你的潜力很大，但目前还没有完全被激活，很多机会其实被你错过了。";
-}else{
-result="【感知型创造人格】你拥有强感知与表达能力";
-hook="你天生具备变现能力，但大多数人会误以为这是‘不稳定’，从而错失机会。";
-}
-
-document.getElementById("resultText").innerText=result;
-document.getElementById("hookText").innerText=hook;
-document.getElementById("result").style.display="block";
-}
-
-/* ✅ 核心修复 */
 function goPay(){
+let answered=document.querySelectorAll('input[type="radio"]:checked');
+
+if(answered.length<20){
+alert("请完成全部20题");
+return;
+}
 window.location.href="pay.html";
 }
-
 </script>
 
 </body>
