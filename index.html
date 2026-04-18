@@ -6,99 +6,44 @@
 <title>性格天赋深度测试（20题）</title>
 
 <style>
-body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
-    background:linear-gradient(180deg,#ffffff,#f4f6f9);
-    margin:0;
-}
-
-/* 主容器 */
+body{font-family:Arial;background:#f4f6f9;margin:0}
 .container{
     max-width:750px;
     margin:20px auto;
     background:#fff;
     padding:25px;
-    border-radius:16px;
-    box-shadow:0 12px 30px rgba(0,0,0,0.08);
-}
-
-/* 标题 */
-h1{
-    text-align:center;
-    font-size:22px;
-}
-
-/* 副标题 */
-.sub{
-    text-align:center;
-    color:#999;
-    font-size:13px;
-}
-
-/* 问题卡片 */
-.question{
-    margin:20px 0;
-    padding:15px;
     border-radius:12px;
-    background:#fafafa;
-    border:1px solid #eee;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1)
 }
-
-/* 选项 */
+h1{text-align:center}
+.question{margin:18px 0}
 .option{
     display:block;
-    margin:10px 0;
-    padding:12px;
-    border-radius:10px;
+    margin:6px 0;
+    padding:10px;
+    border-radius:6px;
     background:#f1f1f1;
-    cursor:pointer;
-    transition:0.2s;
+    cursor:pointer
 }
+.option:hover{background:#ffeaea}
 
-/* hover效果 */
-.option:hover{
-    background:#ffeaea;
-}
-
-/* 按钮 */
 button{
-    padding:14px;
-    background:#ff3b30;
+    padding:12px;
+    background:#007bff;
     color:#fff;
     border:none;
-    border-radius:12px;
+    border-radius:6px;
     font-size:16px;
-    width:100%;
-    margin-top:20px;
+    width:100%
 }
 
-/* 结果区 */
-.result{
-    display:none;
-    margin-top:25px;
-}
+.result{display:none;margin-top:20px}
 
-/* 情绪钩子 */
-.hook{
-    margin-top:15px;
-    padding:15px;
-    background:#ffeaea;
-    border-radius:10px;
-}
-
-/* 支付卡片 */
 .pay{
     background:#fff3cd;
     padding:15px;
-    border-radius:12px;
-    margin-top:20px;
-}
-
-/* 小提示 */
-.small{
-    font-size:12px;
-    color:gray;
-    margin-top:8px;
+    border-radius:10px;
+    margin-top:15px
 }
 </style>
 </head>
@@ -108,7 +53,9 @@ button{
 <div class="container">
 
 <h1>性格天赋深度测试（20题）</h1>
-<p class="sub">已有 52871 人完成测试 · 准确率高达93%</p>
+<p style="text-align:center;color:gray;">
+已有 52871 人完成测试 · 准确率高达93%
+</p>
 
 <div id="questions"></div>
 
@@ -119,7 +66,7 @@ button{
 <h2>你的性格类型：</h2>
 <p id="resultText" style="font-size:18px;font-weight:bold"></p>
 
-<div class="hook">
+<div style="margin-top:15px;padding:15px;background:#ffeaea;border-radius:10px;">
 <p id="hookText" style="font-weight:bold;color:#d9534f"></p>
 </div>
 
@@ -135,7 +82,9 @@ button{
 
 <button onclick="goPay()">立即解锁完整报告（9.9元）</button>
 
-<p class="small">已有 1327 人刚刚解锁</p>
+<p style="font-size:12px;color:gray;margin-top:8px;">
+已有 1327 人刚刚解锁
+</p>
 
 </div>
 </div>
@@ -143,7 +92,6 @@ button{
 </div>
 
 <script>
-
 
 const questions=[
 ["你更容易提前规划好事情","更习惯顺其自然"],
@@ -170,7 +118,6 @@ const questions=[
 
 const container=document.getElementById("questions");
 
-/* 渲染题目 */
 questions.forEach((q,i)=>{
 container.innerHTML+=`<div class="question">
 <p>${i+1}. 请选择更符合你的描述：</p>
@@ -179,12 +126,11 @@ container.innerHTML+=`<div class="question">
 </div>`;
 });
 
-/* 计算结果 */
 function showResult(){
 let score=0;
 
 for(let i=0;i<questions.length;i++){
-let ans=document.querySelector(\`input[name="q\${i}"]:checked\`);
+let ans=document.querySelector(`input[name="q${i}"]:checked`);
 if(!ans){alert("请完成所有题目");return}
 if(ans.value==='A')score++;
 }
@@ -208,7 +154,7 @@ document.getElementById("hookText").innerText=hook;
 document.getElementById("result").style.display="block";
 }
 
-/* ✅ 修复跳转 */
+/* ✅ 核心修复 */
 function goPay(){
 window.location.href="pay.html";
 }
@@ -217,3 +163,4 @@ window.location.href="pay.html";
 
 </body>
 </html>
+
