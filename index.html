@@ -19,7 +19,7 @@ body{
     background:#fff;
     padding:25px;
     border-radius:16px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
 }
 
 /* 标题 */
@@ -35,12 +35,13 @@ h1{
     font-size:13px;
 }
 
-/* 问题 */
+/* 问题卡片 */
 .question{
     margin:20px 0;
     padding:15px;
     border-radius:12px;
     background:#fafafa;
+    border:1px solid #eee;
 }
 
 /* 选项 */
@@ -54,6 +55,7 @@ h1{
     transition:0.2s;
 }
 
+/* hover效果 */
 .option:hover{
     background:#ffeaea;
 }
@@ -70,13 +72,13 @@ button{
     margin-top:20px;
 }
 
-/* 结果 */
+/* 结果区 */
 .result{
     display:none;
     margin-top:25px;
 }
 
-/* 钩子提示 */
+/* 情绪钩子 */
 .hook{
     margin-top:15px;
     padding:15px;
@@ -84,12 +86,19 @@ button{
     border-radius:10px;
 }
 
-/* 支付区 */
+/* 支付卡片 */
 .pay{
     background:#fff3cd;
     padding:15px;
     border-radius:12px;
     margin-top:20px;
+}
+
+/* 小提示 */
+.small{
+    font-size:12px;
+    color:gray;
+    margin-top:8px;
 }
 </style>
 </head>
@@ -126,9 +135,7 @@ button{
 
 <button onclick="goPay()">立即解锁完整报告（9.9元）</button>
 
-<p style="font-size:12px;color:gray;margin-top:8px;">
-已有 1327 人刚刚解锁
-</p>
+<p class="small">已有 1327 人刚刚解锁</p>
 
 </div>
 </div>
@@ -137,6 +144,7 @@ button{
 
 <script>
 
+/* 题目（完全没动） */
 const questions=[
 ["你更容易提前规划好事情","更习惯顺其自然"],
 ["遇到问题你更倾向自己解决","找人一起讨论"],
@@ -162,6 +170,7 @@ const questions=[
 
 const container=document.getElementById("questions");
 
+/* 渲染题目 */
 questions.forEach((q,i)=>{
 container.innerHTML+=`<div class="question">
 <p>${i+1}. 请选择更符合你的描述：</p>
@@ -170,10 +179,12 @@ container.innerHTML+=`<div class="question">
 </div>`;
 });
 
+/* 计算结果 */
 function showResult(){
 let score=0;
+
 for(let i=0;i<questions.length;i++){
-let ans=document.querySelector(`input[name="q${i}"]:checked`);
+let ans=document.querySelector(\`input[name="q\${i}"]:checked\`);
 if(!ans){alert("请完成所有题目");return}
 if(ans.value==='A')score++;
 }
