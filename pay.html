@@ -10,11 +10,17 @@
 
 <img src="pay.jpg" style="width:200px;">
 
-<a href="report.html">
-  <button style="padding:15px 30px;font-size:18px;">
-    我已支付，查看报告
-  </button>
-</a>
+<button onclick="paySuccess()">
+  我已支付，查看报告
+</button>
+
+<script>
+function paySuccess(){
+  localStorage.setItem("paid","true");
+  window.location.href="report.html";
+}
+</script>
+
 
 </body>
 </html>
