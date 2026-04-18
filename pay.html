@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>解锁完整报告</title>
+<style>
+body {font-family: Arial; background:#f4f6f9; text-align:center; padding:20px;}
+.box {background:white; padding:25px; border-radius:12px; max-width:400px; margin:auto;}
+h1 {color:#ff4d4f;}
+.price {font-size:26px; color:#ff4d4f; margin:15px 0;}
+.btn {background:#ff4d4f; color:white; padding:15px; border-radius:8px; margin-top:15px; cursor:pointer;}
+.tip {color:gray; font-size:14px; margin-top:10px;}
+.lock {background:#fff3cd; padding:10px; border-radius:8px; margin-top:15px;}
+.timer {color:#ff0000; font-size:22px; margin-top:10px;}
+.people {color:#ff4d4f; margin-top:10px; font-weight:bold;}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h1>你的完整报告已生成</h1>
+<p>系统已解析你的隐藏性格与天赋潜力</p>
+
+<div class="lock">
+<p>你属于：洞察型人格（仅解锁30%）</p>
+<p style="color:red;">完整分析已加密</p>
+</div>
+
+<div class="timer" id="timer">剩余时间：10:00</div>
+
+<div class="people">🔥 已有 1.5 万人成功解锁</div>
+
+<div class="price">限时 ¥9.9 解锁完整版</div>
+
+<img src="https://via.placeholder.com/200" alt="收款码">
+
+<div class="btn" onclick="goResult()">我已付款，立即解锁</div>
+
+<div class="tip">
+⚠️ 超时将无法查看<br>
+⏳ 仅限10分钟内解锁
+</div>
+</div>
+
+<script>
+let time = 600;
+
+function updateTimer(){
+    let minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    document.getElementById("timer").innerText = "剩余时间：" + 
+        (minutes<10?"0"+minutes:minutes) + ":" + 
+        (seconds<10?"0"+seconds:seconds);
+    if(time > 0){
+        time--;
+        setTimeout(updateTimer,1000);
+    }else{
+        document.getElementById("timer").innerText = "已超时，请重新测试";
+    }
+}
+
+updateTimer();
+
+function goResult(){
+    window.location.href = "result.html";
+}
+</script>
+
+</body>
+</html>

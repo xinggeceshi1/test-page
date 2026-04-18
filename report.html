@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>深度人格报告（商业版）</title>
+<style>
+body{font-family:"Microsoft YaHei";background:#0f172a;color:#fff;margin:0}
+.container{max-width:850px;margin:40px auto;padding:35px;background:#ffffff10;border-radius:20px}
+h1{text-align:center;font-size:26px}
+.score{font-size:64px;text-align:center;color:#fbbf24;margin:10px}
+.section{margin-top:28px;line-height:1.9;font-size:15px}
+.bar{background:#334155;border-radius:10px;margin:8px 0}
+.bar-inner{height:10px;background:#fbbf24;border-radius:10px}
+.lock{margin-top:25px;padding:20px;background:#00000060;border-radius:10px;text-align:center}
+button{margin-top:15px;padding:14px;width:100%;background:#22c55e;border:none;border-radius:10px;font-size:16px}
+.highlight{background:#fef3c7;color:#000;padding:15px;border-radius:10px;margin-top:20px}
+.small{font-size:12px;color:#aaa;text-align:center}
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>你的专属深度人格与潜力分析报告</h1>
+<div class="score" id="score"></div>
+
+<div id="content"></div>
+
+<div class="lock" id="lock">
+<p>🔒 以下为核心人生路径与关键机会分析（已加密）</p>
+<button onclick="unlock()">立即解锁完整报告</button>
+<div class="small">已有15,842人解锁该报告</div>
+</div>
+
+</div>
+
+<script>
+
+const types=[
+{
+name:"成长爆发型",
+desc:[
+"你属于典型的后期爆发型人格，这类人在早期往往表现平稳，但在关键阶段会出现明显跃迁。",
+"你并不是缺乏能力，而是需要更长时间去积累与打磨，一旦突破临界点，成长速度会远超平均水平。",
+"你具备长期主义思维，这意味着你在短期竞争中未必突出，但在长期竞争中拥有极强优势。"
+],
+risk:[
+"容易在早期怀疑自己方向是否正确",
+"短期看不到成果时容易焦虑",
+"过度积累而延迟行动"
+]
+},
+{
+name:"掌控决策型",
+desc:[
+"你具备较强的控制感与决策能力，习惯主导局面并对结果负责。",
+"你在复杂环境中更容易保持清晰判断，并快速做出选择。",
+"你倾向于以结果为导向，因此在执行层面往往效率较高。"
+],
+risk:[
+"对结果要求过高带来压力",
+"不容易接受不确定性",
+"容易忽视情绪层面的影响"
+]
+},
+{
+name:"感知共情型",
+desc:[
+"你对环境与他人情绪高度敏感，这使你在人际关系中具备天然优势。",
+"你更擅长理解他人，而不是简单表达自己。",
+"你在团队中通常扮演“润滑剂”的角色。"
+],
+risk:[
+"容易情绪内耗",
+"过度在意他人评价",
+"边界感较弱"
+]
+}
+];
+
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+
+let type=pick(types);
+let score=Math.floor(Math.random()*30)+70;
+document.getElementById("score").innerText=score+"分";
+
+function bar(){return Math.floor(Math.random()*30)+70;}
+
+let html=`
+<div class="section">
+<h2>🧠 人格核心结构解析</h2>
+<p>${pick(type.desc)}</p>
+<p>${pick(type.desc)}</p>
+<p>从你的整体表现来看，你并不是依赖单一能力的人，而是通过多维度能力协同发展。这种结构决定了你的成长路径更偏向“复合型提升”，而非单点突破。</p>
+</div>
+
+<div class="section">
+<h2>📊 多维能力模型分析</h2>
+
+<p>逻辑分析能力</p>
+<div class="bar"><div class="bar-inner" style="width:${bar()}%"></div></div>
+
+<p>执行推动能力</p>
+<div class="bar"><div class="bar-inner" style="width:${bar()}%"></div></div>
+
+<p>情绪感知能力</p>
+<div class="bar"><div class="bar-inner" style="width:${bar()}%"></div></div>
+
+<p>抗压恢复能力</p>
+<div class="bar"><div class="bar-inner" style="width:${bar()}%"></div></div>
+
+<p>长期成长潜力</p>
+<div class="bar"><div class="bar-inner" style="width:${bar()}%"></div></div>
+
+</div>
+
+<div class="section">
+<h2>⚠️ 潜在限制因素分析</h2>
+<p>• ${pick(type.risk)}<br>
+• ${pick(type.risk)}<br>
+• ${pick(type.risk)}</p>
+<p>这些限制并非缺点，而是你当前阶段需要优化的方向。一旦调整，将直接影响你的成长速度。</p>
+</div>
+
+<div class="highlight">
+💡 核心洞察：<br>
+你当前的状态并不是能力问题，而是“策略与节奏”的问题。只要调整路径，你的成长将进入加速区间。
+</div>
+`;
+
+document.getElementById("content").innerHTML=html;
+
+if(localStorage.getItem("paid")) unlock();
+
+function unlock(){
+localStorage.setItem("paid","true");
+document.getElementById("lock").innerHTML=`
+<h2>📈 深度成长路径分析</h2>
+<p>你的最佳路径是“能力积累 + 关键节点突破”。前期需要通过持续行动建立基础，中期抓住关键机会实现跃迁。</p>
+
+<h2>💰 收入与发展建议</h2>
+<p>
+1. 建立一个长期可复利的技能<br>
+2. 每90天完成一次能力升级<br>
+3. 通过平台放大你的影响力
+</p>
+
+<h2>🚀 未来机会窗口</h2>
+<p>
+未来你的关键机会来自“认知升级 + 平台红利”。一旦抓住，将产生明显跃迁。
+</p>
+
+<div class="highlight">
+🔥 最终结论：你属于“后期优势放大型人格”，越到后期越强。
+</div>
+`;
+}
+
+</script>
+</body>
+</html>
