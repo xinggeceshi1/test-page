@@ -33,7 +33,13 @@ h1 {color:#ff4d4f;}
 
 <div class="price">限时 ¥9.9 解锁完整版</div>
 
-<img src="https://via.placeholder.com/200" alt="收款码">
+<!-- ✅ 收款码（本地图片） -->
+<img src="pay.jpg" alt="收款码" width="220" 
+style="margin-top:15px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.2);">
+
+<p style="margin-top:10px;color:#666;font-size:14px;">
+📱 微信 扫码支付
+</p>
 
 <div class="btn" onclick="goResult()">我已付款，立即解锁</div>
 
@@ -63,9 +69,11 @@ function updateTimer(){
 updateTimer();
 
 function goResult(){
-    window.location.href = "result.html";
+    localStorage.setItem("paid","true"); // 标记支付
+    window.location.href = "report.html"; // 跳转报告页
 }
 </script>
 
 </body>
 </html>
+
