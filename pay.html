@@ -1,52 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>解锁完整报告</title>
 
 <style>
-/* ✅ 全局重置 */
+/* ✅ 全屏基础 */
 body {
     margin:0;
-    font-family: Arial;
-    background:#f4f6f9;
-
-    /* ✅ 居中关键 */
-    display:flex;
-    justify-content:center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    background:#ffffff;
 }
 
-/* ✅ 容器铺满屏幕 */
+/* ✅ 整页铺满 */
 .box {
-    background:white;
-    padding:25px;
-    border-radius:16px;
-
-    /* ✅ 核心：适配手机 */
     width:100%;
-    max-width:500px;
+    min-height:100vh; /* 🔥 关键：撑满屏幕 */
 
-    /* ✅ 居中 */
-    margin:20px;
+    padding:20px;
 
-    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    box-sizing:border-box;
 }
 
 /* 标题 */
 h1 {
-    color:#ff4d4f;
+    color:#ff3b30;
     font-size:22px;
+    text-align:center;
 }
 
-/* 价格 */
-.price {
-    font-size:26px;
-    color:#ff4d4f;
-    margin:15px 0;
+/* 副标题 */
+.sub {
+    text-align:center;
+    color:#666;
+    font-size:14px;
+    margin-top:5px;
+}
+
+/* 锁区 */
+.lock {
+    background:#fff4d6;
+    padding:15px;
+    border-radius:12px;
+    margin-top:20px;
+    text-align:center;
+}
+
+/* 倒计时 */
+.timer {
+    text-align:center;
+    color:#ff0000;
+    font-size:22px;
     font-weight:bold;
+    margin-top:15px;
 }
 
-/* 按钮 */
-.btn {
-    background:#ff4d4f;
+/* 人数 */
+.people {
+    text-align:center;
+    color:#ff3b30;
+    margin-top:10px;
+
