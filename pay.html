@@ -2,78 +2,51 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>解锁完整报告</title>
+
 <style>
-body {font-family: Arial; background:#f4f6f9; text-align:center; padding:20px;}
-.box {background:white; padding:25px; border-radius:12px; max-width:400px; margin:auto;}
-h1 {color:#ff4d4f;}
-.price {font-size:26px; color:#ff4d4f; margin:15px 0;}
-.btn {background:#ff4d4f; color:white; padding:15px; border-radius:8px; margin-top:15px; cursor:pointer;}
-.tip {color:gray; font-size:14px; margin-top:10px;}
-.lock {background:#fff3cd; padding:10px; border-radius:8px; margin-top:15px;}
-.timer {color:#ff0000; font-size:22px; margin-top:10px;}
-.people {color:#ff4d4f; margin-top:10px; font-weight:bold;}
-</style>
-</head>
+/* ✅ 全局重置 */
+body {
+    margin:0;
+    font-family: Arial;
+    background:#f4f6f9;
 
-<body>
-
-<div class="box">
-<h1>你的完整报告已生成</h1>
-<p>系统已解析你的隐藏性格与天赋潜力</p>
-
-<div class="lock">
-<p>你属于：洞察型人格（仅解锁30%）</p>
-<p style="color:red;">完整分析已加密</p>
-</div>
-
-<div class="timer" id="timer">剩余时间：10:00</div>
-
-<div class="people">🔥 已有 1.5 万人成功解锁</div>
-
-<div class="price">限时 ¥9.9 解锁完整版</div>
-
-<!-- ✅ 收款码（本地图片） -->
-<img src="pay.jpg" alt="收款码" width="220" 
-style="margin-top:15px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.2);">
-
-<p style="margin-top:10px;color:#666;font-size:14px;">
-📱 微信 扫码支付
-</p>
-
-<div class="btn" onclick="goResult()">我已付款，立即解锁</div>
-
-<div class="tip">
-⚠️ 超时将无法查看<br>
-⏳ 仅限10分钟内解锁
-</div>
-</div>
-
-<script>
-let time = 600;
-
-function updateTimer(){
-    let minutes = Math.floor(time / 60);
-    let seconds = time % 60;
-    document.getElementById("timer").innerText = "剩余时间：" + 
-        (minutes<10?"0"+minutes:minutes) + ":" + 
-        (seconds<10?"0"+seconds:seconds);
-    if(time > 0){
-        time--;
-        setTimeout(updateTimer,1000);
-    }else{
-        document.getElementById("timer").innerText = "已超时，请重新测试";
-    }
+    /* ✅ 居中关键 */
+    display:flex;
+    justify-content:center;
 }
 
-updateTimer();
+/* ✅ 容器铺满屏幕 */
+.box {
+    background:white;
+    padding:25px;
+    border-radius:16px;
 
-function goResult(){
-    localStorage.setItem("paid","true"); // 标记支付
-    window.location.href = "report.html"; // 跳转报告页
+    /* ✅ 核心：适配手机 */
+    width:100%;
+    max-width:500px;
+
+    /* ✅ 居中 */
+    margin:20px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
 }
-</script>
 
-</body>
-</html>
+/* 标题 */
+h1 {
+    color:#ff4d4f;
+    font-size:22px;
+}
 
+/* 价格 */
+.price {
+    font-size:26px;
+    color:#ff4d4f;
+    margin:15px 0;
+    font-weight:bold;
+}
+
+/* 按钮 */
+.btn {
+    background:#ff4d4f;
