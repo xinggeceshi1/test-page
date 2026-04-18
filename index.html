@@ -3,116 +3,132 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>性格天赋深度测试（20题）</title>
+<title>性格测试</title>
+
 <style>
-body{font-family:Arial;background:#f4f6f9;margin:0}
-.container{max-width:750px;margin:20px auto;background:#fff;padding:25px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.1)}
-h1{text-align:center}
-.question{margin:18px 0}
-.option{display:block;margin:6px 0;padding:8px;border-radius:6px;background:#f1f1f1;cursor:pointer}
-button{padding:12px 20px;background:#007bff;color:#fff;border:none;border-radius:6px;font-size:16px;width:100%}
-.result{display:none;margin-top:20px}
-.pay{background:#fff3cd;padding:15px;border-radius:10px;margin-top:15px}
+body {
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+    background:linear-gradient(180deg,#fff,#f5f5f5);
+    padding:20px;
+}
+
+/* 卡片 */
+.box {
+    background:white;
+    padding:25px;
+    border-radius:16px;
+    max-width:500px;
+    margin:auto;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* 标题 */
+h1 {
+    text-align:center;
+    color:#ff3b30;
+    font-size:24px;
+}
+
+/* 情绪文案 */
+.desc {
+    text-align:center;
+    color:#666;
+    font-size:14px;
+    margin-top:8px;
+}
+
+/* 问题 */
+.question {
+    margin-top:25px;
+    font-size:15px;
+}
+
+/* 选项 */
+label {
+    display:block;
+    padding:12px;
+    background:#f7f7f7;
+    border-radius:10px;
+    margin-top:10px;
+    cursor:pointer;
+}
+
+/* 按钮 */
+.btn {
+    background:#ff3b30;
+    color:white;
+    padding:16px;
+    border-radius:12px;
+    text-align:center;
+    margin-top:25px;
+    font-size:16px;
+}
+
+/* 底部暗示 */
+.hint {
+    text-align:center;
+    font-size:12px;
+    color:#999;
+    margin-top:10px;
+}
 </style>
 </head>
+
 <body>
 
-<div class="container">
-<h1>性格天赋深度测试（20题）</h1>
-<p style="text-align:center;color:gray;">已有 52871 人完成测试 · 准确率高达93%</p>
+<div class="box">
 
-<div id="questions"></div>
-<button onclick="showResult()">查看结果</button>
+<h1>你的真实人格，可能和你想的不一样</h1>
+<p class="desc">90%的人从未真正了解自己</p>
 
-<div class="result" id="result">
-<h2>你的性格类型：</h2>
-<p id="resultText" style="font-size:18px;font-weight:bold"></p>
-
-<div style="margin-top:15px;padding:15px;background:#ffeaea;border-radius:10px;">
-<p id="hookText" style="font-weight:bold;color:#d9534f"></p>
+<div class="question">
+<p>1. 当你一个人时，你更常？</p>
+<label><input type="radio" name="q1" value="A"> 思考人生、分析自己</label>
+<label><input type="radio" name="q1" value="B"> 刷视频、放松自己</label>
 </div>
 
-<div class="pay">
-<p>🔒 你的【天赋赚钱潜力报告】已生成（限时可查看）</p>
-<ul>
-<li>✔ 你真正适合的赚钱路径（90%的人选错）</li>
-<li>✔ 你的隐藏优势如何变现</li>
-<li>✔ 你未来3年的关键机会点</li>
-<li>✔ 哪种选择会让你收入翻倍</li>
-</ul>
-<button onclick="goPay()">立即解锁完整报告（9.9元）</button>
-<p style="font-size:12px;color:gray;margin-top:8px;">已有 1327 人刚刚解锁</p>
+<div class="question">
+<p>2. 面对重要选择，你通常？</p>
+<label><input type="radio" name="q2" value="A"> 深思熟虑，反复权衡</label>
+<label><input type="radio" name="q2" value="B"> 凭感觉，快速决定</label>
 </div>
 
-</div>
+<div class="btn" onclick="goPay()">查看我的深层人格 →</div>
+
+<div class="hint">已有 1,582,394 人测试</div>
+
 </div>
 
 <script>
-
-const questions=[
-["你更容易提前规划好事情","更习惯顺其自然"],
-["遇到问题你更倾向自己解决","找人一起讨论"],
-["空闲时间你更喜欢一个人待着","和别人一起活动"],
-["做决定时你更看重逻辑分析","依赖内心感觉"],
-["你更讨厌混乱无序","被规则限制"],
-["你更擅长分析问题","表达想法"],
-["面对机会你更愿意先评估","先尝试"],
-["你更相信数据逻辑","直觉判断"],
-["做事更倾向稳定推进","灵活变化"],
-["你更在意把事情做对","让别人满意"],
-["赚钱你更倾向靠能力","靠机会人脉"],
-["你更容易长期坚持一件事","不断尝试新方向"],
-["你更适合深度专精","多方向发展"],
-["面对压力你更独自承受","寻求帮助"],
-["你更希望稳定收入","高回报机会"],
-["别人更觉得你理性冷静","情绪丰富"],
-["你更容易被明确目标吸引","有趣感觉吸引"],
-["你更害怕失败","害怕错过"],
-["你更倾向掌控局面","顺其自然"],
-["你更希望被认可能力","被理解情绪"]
-];
-
-const container=document.getElementById("questions");
-
-questions.forEach((q,i)=>{
-container.innerHTML+=`<div class="question">
-<p>${i+1}. 请选择更符合你的描述：</p>
-<label class="option"><input type="radio" name="q${i}" value="A"> ${q[0]}</label>
-<label class="option"><input type="radio" name="q${i}" value="B"> ${q[1]}</label>
-</div>`;
-});
-
-function showResult(){
-let score=0;
-for(let i=0;i<questions.length;i++){
-let ans=document.querySelector(`input[name="q${i}"]:checked`);
-if(!ans){alert("请完成所有题目");return}
-if(ans.value==='A')score++;
-}
-
-let result="";
-let hook="";
-
-if(score>=14){
-result="【掌控型天赋人格】你具备强逻辑与决策能力";
-hook="你具备明显的赚钱优势，但如果方向选错，反而更容易被困在高强度低回报的路径里。";
-}else if(score>=8){
-result="【均衡成长型人格】你适应力极强";
-hook="你的潜力很大，但目前还没有完全被激活，很多机会其实被你错过了。";
-}else{
-result="【感知型创造人格】你拥有强感知与表达能力";
-hook="你天生具备变现能力，但大多数人会误以为这是‘不稳定’，从而错失机会。";
-}
-
-document.getElementById("resultText").innerText=result;
-document.getElementById("hookText").innerText=hook;
-document.getElementById("result").style.display="block";
-}
-
 function goPay(){
-    window.location.href = "pay.html"; // ✅ 正确跳转
-}
+    let q1 = document.querySelector('input[name="q1"]:checked');
+    let q2 = document.querySelector('input[name="q2"]:checked');
 
+    if(!q1 || !q2){
+        alert("请完成测试");
+        return;
+    }
+
+    let scoreA = 0;
+
+    if(q1.value === "A") scoreA++;
+    if(q2.value === "A") scoreA++;
+
+    let result = "";
+
+    if(scoreA >= 1){
+        result = "你属于：洞察型人格";
+    }else{
+        result = "你属于：行动型人格";
+    }
+
+    localStorage.setItem("userType", result);
+
+    window.location.href = "pay.html";
+}
 </script>
+
 </body>
 </html>
+
