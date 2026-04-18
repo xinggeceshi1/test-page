@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>解锁完整报告</title>
+<style>
+body {font-family: Arial; background:#f4f6f9; text-align:center; padding:20px;}
+.box {background:white; padding:25px; border-radius:12px; max-width:400px; margin:auto;}
+h1 {color:#ff4d4f;}
+.price {font-size:26px; color:#ff4d4f; margin:15px 0;}
+.btn {background:#ff4d4f; color:white; padding:15px; border-radius:8px; margin-top:15px; cursor:pointer;}
+.hidden {display:none;}
+.timer {color:red; font-size:22px; margin-top:10px;}
+.people {color:#ff4d4f; font-weight:bold;}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h1>你的完整报告已生成</h1>
+<p>仅解锁30%，完整内容已加密</p>
+
+<div class="timer" id="timer"></div>
+<div class="people">🔥 过去24小时已有 15237 人解锁</div>
+
+<div class="price">限时 ¥9.9 解锁</div>
+
+<img src="https://via.placeholder.com/200">
+
+<div id="payBtn" class="btn" onclick="fakePay()">我已付款，立即解锁</div>
+
+<div id="locked" class="hidden" style="color:red;margin-top:15px;">
+已超时，请重新测试
+</div>
+</div>
+
+<script>
+
+// 初始化时间（10分钟）
+let endTime = localStorage.getItem("endTime");
+
+if(!endTime){
+    endTime = new Date().getTime() + 600000;
+    localStorage.setItem("endTime", endTime);
+}
+
+function updateTimer(){
+    let now = new Date().getTime();
+    let diff = endTime - now;
+
+    if(diff <= 0){
+        document.getElementById("timer").innerText = "已超时";
+        document.getElementById("payBtn").style.display="none";
+        document.getElementById("locked").classList.remove("hidden");
+        return;
+    }
+
+    let m = Math.floor(diff/60000);
+    let s = Math.floor((diff%60000)/1000);
+
+    document.getElementById("timer").innerText = 
+        "剩余时间：" + 
+        (m<10?"0"+m:m) + ":" + 
+        (s<10?"0"+s:s);
+
+    setTimeout(updateTimer,1000);
+}
+
+updateTimer();
+
+// 模拟支付校验（简单版）
+function fakePay(){
+    let paid = confirm("是否已完成支付？");
+    if(paid){
+        window.location.href="result.html";
+    }else{
+        alert("请完成支付后再解锁");
+    }
+}
+
+</script>
+
+</body>
+</html>
