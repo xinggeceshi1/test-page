@@ -6,20 +6,17 @@
 <title>解锁完整报告</title>
 
 <style>
-/* ✅ 全屏基础 */
 body {
     margin:0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
     background:#ffffff;
 }
 
-/* ✅ 整页铺满 */
+/* 整页铺满 */
 .box {
     width:100%;
-    min-height:100vh; /* 🔥 关键：撑满屏幕 */
-
+    min-height:100vh;
     padding:20px;
-
     box-sizing:border-box;
 }
 
@@ -61,4 +58,120 @@ h1 {
     text-align:center;
     color:#ff3b30;
     margin-top:10px;
+    font-weight:bold;
+}
+
+/* 价格 */
+.price {
+    text-align:center;
+    font-size:28px;
+    color:#ff3b30;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+/* 收款码 */
+.qr {
+    width:70%;
+    max-width:280px;
+    display:block;
+    margin:20px auto;
+    border-radius:12px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* 按钮 */
+.btn {
+    background:#ff3b30;
+    color:#fff;
+    padding:16px;
+    border-radius:12px;
+    font-size:16px;
+    text-align:center;
+    margin-top:20px;
+    cursor:pointer;
+}
+
+/* 提示 */
+.tip {
+    text-align:center;
+    color:#999;
+    font-size:12px;
+    margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>你的完整报告已生成</h1>
+<p class="sub">系统已解析你的隐藏性格与赚钱潜力</p>
+
+<div class="lock">
+<p id="typeText">你属于：洞察型人格（仅解锁30%）</p>
+<p style="color:red;">完整分析已加密</p>
+</div>
+
+<div class="timer" id="timer">10:00</div>
+
+<div class="people">🔥 已有 1.5 万人成功解锁</div>
+
+<div class="price">限时 ¥9.9 解锁完整版</div>
+
+<img src="pay.jpg" class="qr">
+
+<p style="text-align:center;color:#666;font-size:14px;">
+📱 微信扫码支付
+</p>
+
+<div class="btn" onclick="goResult()">我已付款，立即解锁</div>
+
+<div class="tip">
+⚠️ 仅限10分钟内有效<br>
+⏳ 超时将无法查看
+</div>
+
+</div>
+
+<script>
+
+/* 承接 index 的结果 */
+let userType = localStorage.getItem("userType");
+if(userType){
+    document.getElementById("typeText").innerText = userType + "（仅解锁30%）";
+}
+
+/* 倒计时 */
+let time = 600;
+
+function updateTimer(){
+    let m = Math.floor(time / 60);
+    let s = time % 60;
+
+    document.getElementById("timer").innerText =
+        (m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
+
+    if(time > 0){
+        time--;
+        setTimeout(updateTimer,1000);
+    }else{
+        document.getElementById("timer").innerText = "已超时，请重新测试";
+    }
+}
+
+updateTimer();
+
+/* 跳转 report */
+function goResult(){
+    localStorage.setItem("paid","true");
+    window.location.href = "report.html";
+}
+
+</script>
+
+</body>
+</html>
+
 
